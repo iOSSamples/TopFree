@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TopFree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PGj-h4-7lg">
+                                <rect key="frame" x="250" y="110.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Wbo-9e-UFW"/>
+                                    <constraint firstAttribute="width" constant="100" id="zmn-YS-asm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X6-CH-bDd">
+                                <rect key="frame" x="215.5" y="260.5" width="170" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6cB-CS-Nm8"/>
+                                    <constraint firstAttribute="width" constant="170" id="vRV-cq-Gt3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplicativo Top Free na App Store Brasil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWB-eF-elA">
+                                <rect key="frame" x="150.5" y="50" width="299.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PGj-h4-7lg" firstAttribute="top" secondItem="ZWB-eF-elA" secondAttribute="bottom" constant="40" id="Arm-gV-5Px"/>
+                            <constraint firstItem="5X6-CH-bDd" firstAttribute="top" secondItem="PGj-h4-7lg" secondAttribute="bottom" constant="50" id="G4H-no-E4G"/>
+                            <constraint firstAttribute="centerX" secondItem="5X6-CH-bDd" secondAttribute="centerX" id="IBJ-w8-iYu"/>
+                            <constraint firstAttribute="centerX" secondItem="PGj-h4-7lg" secondAttribute="centerX" id="PWK-es-eX5"/>
+                            <constraint firstItem="ZWB-eF-elA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="WMx-81-7AS"/>
+                            <constraint firstAttribute="centerX" secondItem="ZWB-eF-elA" secondAttribute="centerX" id="yfT-bY-Yud"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appIconImageView" destination="PGj-h4-7lg" id="D4s-DT-iKt"/>
+                        <outlet property="appNameLabel" destination="5X6-CH-bDd" id="9ck-i1-AE8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
