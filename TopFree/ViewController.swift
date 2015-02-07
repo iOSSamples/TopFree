@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                             
                             if let appName = self.getTopFreeAppName(data){
                                 
-                                dispatch_async(dispatch_get_main_queue(), { self.appNameLabel.text = appName })
+                                self.appNameLabel.text = appName
                             }
 
                             
