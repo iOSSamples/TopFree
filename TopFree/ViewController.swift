@@ -40,6 +40,12 @@ class ViewController: UIViewController {
 
                             println(string)
                             
+                            if let appName = self.getTopFreeAppName(data){
+                                
+                                dispatch_async(dispatch_get_main_queue(), { self.appNameLabel.text = appName })
+                            }
+
+                            
         })
         
         //disparo da execução da task
@@ -49,6 +55,33 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func getTopFreeAppName(data: NSData) -> String? {
+        
+        var jsonError: NSError?
+        
+        //cria um dicionario [String:AnyObject] do JSON
+        if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)  as? [String:AnyObject]{
+            
+            //permite leitura dos valore do JSON...
+            
+            //tenta criar um dicionario a partir da chave "feed"
+            if let feed = json["feed"] as? [String:AnyObject] {
+                
+                if let entry = feed["entry"] as? [String:AnyObject] {
+                    
+                    if let name = entry["im:name"] as? [String:AnyObject]{
+                        
+                        if let label = name["label"] as? String{
+                            
+                            return label
+                        }
+                    }
+                }
+            }
+        }
+        return nil
     }
 
     
