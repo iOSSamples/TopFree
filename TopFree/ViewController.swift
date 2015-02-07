@@ -46,6 +46,13 @@ class ViewController: UIViewController {
                                     self.appNameLabel.text = appName
                                 })
                             }
+                            
+                            if let appImageURL = self.getTopFreeAppImage(data){
+                                
+                                self.downloadAppImage(appImageURL)
+                                
+                            }
+
 
                             
         })
@@ -84,6 +91,65 @@ class ViewController: UIViewController {
             }
         }
         return nil
+    }
+    
+    func getTopFreeAppImage(data: NSData) -> String? {
+        
+        var jsonError: NSError?
+        
+        //cria um dicionario [String:AnyObject] do JSON
+        if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)  as? [String:AnyObject]{
+            
+            //permite leitura dos valore do JSON...
+            
+            //tenta criar um dicionario a partir da chave "feed"
+            if let feed = json["feed"] as? [String:AnyObject] {
+                
+                if let entry = feed["entry"] as? [String:AnyObject] {
+                    
+                    if let name = entry["im:image"] as? [AnyObject]{
+                        
+                        if let image = name[2] as? [String: AnyObject]{
+                            
+                            if let label = image["label"] as? String{
+                                return label
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+        return nil
+    }
+    
+    /**
+    Função que configura uma task para donwload de imagem do URL do parâmetro
+    */
+    func downloadAppImage(imageURL : String) {
+        
+        let url = NSURL (string: imageURL)
+        
+        //outra maneira de criar uma sessao
+        //retorna um singleton (sessao compartilhada)
+        var imageSession = NSURLSession.sharedSession()
+        
+        //cria uma task do tipo download
+        var imageTask = imageSession.downloadTaskWithURL(url!) {
+            (url: NSURL!, response: NSURLResponse!, error: NSError!) -> Void in
+            
+            //recebe o binário da imagem
+            if let imageData = NSData(contentsOfURL: url){
+                
+                //transforma o binario em UIImage e atualiza a tela na thread principal
+                
+                dispatch_async(dispatch_get_main_queue() , {
+                    self.appIconImageView.image = UIImage(data: imageData)
+                })
+                
+            }
+        }
+        imageTask.resume()
     }
 
     
